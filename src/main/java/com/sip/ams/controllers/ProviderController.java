@@ -17,6 +17,14 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+
+
+
+
+
+
+
+
 @Controller
 @RequestMapping("/provider/")
 
@@ -32,14 +40,14 @@ public class ProviderController {
 	@GetMapping("list")
 	// @ResponseBody
 	public String listProviders(Model model) {
-		
-		List<Provider> lp = (List<Provider>)providerRepository.findAll();
-		if (lp.size()==0) lp = null;
+
+		List<Provider> lp = (List<Provider>) providerRepository.findAll();
+		if (lp.size() == 0)
+			lp = null;
 		model.addAttribute("providers", lp);
 
 		return "provider/listProviders";
 
-		
 		// System.out.println(lp);
 
 		// return "Nombre de fournisseur = " + lp.size();
@@ -47,19 +55,22 @@ public class ProviderController {
 
 	@GetMapping("add")
 	public String showAddProviderForm(Model model) {
-		Provider provider = new Provider();// object dont la valeur des attributs par defaut
+		Provider provider = new Provider();
 		model.addAttribute("provider", provider);
 		return "provider/addProvider";
 	}
 
 	@PostMapping("add")
 	public String addProvider(@Valid Provider provider, BindingResult result, Model model) {
+		
 		if (result.hasErrors()) {
 			return "provider/addProvider";
 		}
 		providerRepository.save(provider);
 		return "redirect:list";
 	}
+
+	
 
 	@GetMapping("delete/{id}")
 	public String deleteProvider(@PathVariable("id") long id, Model model) {

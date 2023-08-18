@@ -19,7 +19,7 @@
 			<div class="card-body">
 				<div th:switch="${providers}" class="container my-5">
 					<p class="my-5">
-						<a th:href="@{'/provider/add/'}" class="btn btn-primary"><i class="fas fa-user-plus ml-2"> Add
+						<a th:href="@{'/provider/add'}" class="btn btn-success"><i class="fas fa-user-plus ml-2"> Add
 								Provider</i></a>
 					</p>
 					<div class="col-md-10">
@@ -41,9 +41,9 @@
 										<td th:text="${provider.email}"></td>
 										<td th:text="${provider.address}"></td>
 										<td><a th:href="@{/provider/edit/{id}(id=${provider.id})}"
-												class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+												class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
 										<td><a th:href="@{/provider/delete/{id}(id=${provider.id})}"
-												class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+												class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
