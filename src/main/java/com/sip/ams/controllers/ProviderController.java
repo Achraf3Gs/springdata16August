@@ -80,7 +80,7 @@ public class ProviderController {
 		Provider provider = providerRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid provider Id:" + id));
 
-		System.out.println("suite du programme...");
+		//System.out.println("suite du programme...");
 
 		providerRepository.delete(provider);
 
