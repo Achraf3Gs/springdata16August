@@ -31,6 +31,7 @@
 										<th>Name</th>
 										<th>Email</th>
 										<th>Address</th>
+										<th>Details</th>
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
@@ -40,6 +41,7 @@
 										<td th:text="${provider.name}"></td>
 										<td th:text="${provider.email}"></td>
 										<td th:text="${provider.address}"></td>
+										<td><a th:href="@{/provider/show/{id}(id=${provider.id})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i>Details</a></td>
 										<td><a th:href="@{/provider/edit/{id}(id=${provider.id})}"
 												class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
 										<td><a th:href="@{/provider/delete/{id}(id=${provider.id})}"

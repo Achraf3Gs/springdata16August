@@ -6,13 +6,17 @@ package com.sip.ams.entities;
 
 
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 
 
@@ -74,4 +78,17 @@ public class Provider {
 	public String getAddress() {
 		return address;
 	}
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "provider")
+    private List<Article> articles;
+
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+
+
+
 }
