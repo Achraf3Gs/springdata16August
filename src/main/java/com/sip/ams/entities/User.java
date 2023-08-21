@@ -94,4 +94,14 @@ public class User {
 		this.roles = roles;
 	}
 
+	public static Object withDefaultPasswordEncoder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Object usersByUsernameQuery(String usersQuery) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
