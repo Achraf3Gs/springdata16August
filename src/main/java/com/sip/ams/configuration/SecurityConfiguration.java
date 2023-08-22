@@ -35,10 +35,11 @@ public class SecurityConfiguration {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
     @Autowired
-    UserDetailsServiceImpl userDetailsService;
+ 
     
   
 
+    
     @Bean
     public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
@@ -49,26 +50,26 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsManager users(DataSource dataSource) {
-        UserDetails user	 =  User.withDefaultPasswordEncoder()
+        UserDetails user = User.withDefaultPasswordEncoder()
             .username("user")
             .password("password")
             .roles("USER")
             .build();
         JdbcUserDetailsManager users = new JdbcUserDetailsManager();
         users.createUser(user);
-        users.setDataSource( dataSource);
         return users;
     }
-
         @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     	http    .authorizeHttpRequests(auth -> auth
     			.requestMatchers("/").permitAll() // accès pour tous users
                 .requestMatchers("/login").permitAll() // accès pour tous users
+                .requestMatchers("/role/**").permitAll() 
+                .requestMatchers("/account/**").permitAll()
                 .requestMatchers("/registration").permitAll() // accès pour tous users
-                .requestMatchers("/provider/**").hasAuthority("ADMIN")
-                .requestMatchers("/article/**").hasAuthority("USER").anyRequest()
+                .requestMatchers("/provider/**").hasAnyAuthority("ADMIN","SUPERADMIN")
+                .requestMatchers("/article/**").hasAnyAuthority("USER","SUPERADMIN").anyRequest()
                 .authenticated())
                 
                 .csrf(csrf->csrf.disable())

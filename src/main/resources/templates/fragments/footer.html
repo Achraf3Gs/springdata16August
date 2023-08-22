@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+<div th:fragment="footer">
+
+    <div class="container" align="center" style="padding-top:400px">
+
+        <footer>
+        <!-- this is footer -->
+        © 2023 SIP
+            <span sec:authorize="isAuthenticated()">
+                | Logged user: <span sec:authentication="name"></span> |
+                Roles: <span sec:authentication="principal.authorities"></span>
+            </span>
+        </footer>
+    </div>
+
+</div>
+</body>
+</html>
