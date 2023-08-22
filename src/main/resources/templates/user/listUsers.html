@@ -38,7 +38,7 @@
 										<th>Update Role</th>
 										<th>is Active</th>
 										<th>Activer</th>
-										<th>Désactiver</th>
+										<th>Désacctiver</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -61,8 +61,8 @@
 										</td>
 										<td th:text="${user.active}"></td>
 										
-										<td><a th:href="@{/accounts/enable/{id} (id=${user.id})}">Activer</a></td>
-										<td><a th:href="@{/accounts/disable/{id} (id=${user.id})}">Désactiver</a></td>
+										<td><a th:href="@{/accounts/enable/{id}/{email} (id=${user.id}, email=${user.email})}">Activer</a></td>
+										<td><a th:href="@{/accounts/disable/{id}/{email} (id=${user.id}, email=${user.email})}">Désactiver</a></td>
 									    
 									</tr>
 								</tbody>
